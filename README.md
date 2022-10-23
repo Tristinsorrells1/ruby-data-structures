@@ -20,7 +20,7 @@ their own data structures.
 
 ## Data structures discussed here
 
-- [Linked lists](linked_lists)
+- [Linked lists](linked_list)
 - Stacks
 - Queues
 - Binary search trees
