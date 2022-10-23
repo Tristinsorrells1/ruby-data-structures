@@ -2,88 +2,95 @@
 require 'node'
 
 ##
-# Represents a linked list.
+# Represents a singly linked list.
 
 class LinkedList
   attr_reader :head
 
   ##
-  # Creates an empty LinkedList.
+  # Creates an empty linked list.
 
   def initialize
     @head = nil
   end
 
   ##
-  # Appends the specified +value+ to this LinkedList.
+  # Adds a Node with the specified +value+ to the front of the list.
 
-  def append(value)
+  def add_front value
+    new_node = Node.new value
+    if @head
+      new_node.next = @head
+      @head = new_node
+    else
+      @head = new_node
+    end
+  end
+
+  ##
+  # Adds a Node with the specified +value+ to the end of the list.
+
+  def add_end value
+    new_node = Node.new value
     if @head == nil
-      @head = Node.new(value)
+      @head = new_node
     else
       node = @head
-      while node.next != nil
+      while node.next
         node = node.next
       end
-      node.next = Node.new(value)
+      node.next = new_node
     end
   end
 
   ##
-  # Appends the specified +value+ to this LinkedList after the Node with the 
-  # value +target+.
+  # Returns the Node with the specified +target+ value, or nil if not found.
 
-  def append_after(target, value)
-    found = find(target)
-    if found
-      node = Node.new(value)
-      node.next = found.next
-      found.next = node
-    end
-  end
-
-  ##
-  # Returns the Node with the value +target+, or nil if not found.
-
-  def find(target)
+  def find target
     node = @head
     while node
-      if target == node.value
+      if node.value == target
         return node
-      else
-        node = node.next
       end
+      node = node.next
     end
-    nil
+    return nil
   end
 
   ##
-  # Removes the Node with the value +target+.
+  # Removes the Node with the specified +target+ value and returns true;
+  # returns false if not found.
+  #
+  # To remove a Node N, we set its previous Node's next value to N's next
+  # value (or we set @head to @head.next). This is why we look at node.next;
+  # Nodes have no property named "previous".
 
-  def remove(target)
-    if @head.value == target
-      @head = @head.next
-    else
-      node = @head
-      while node
-        if node.next
+  def remove target
+    if @head
+      if @head.value == target
+        @head = @head.next
+        return true
+      else
+        node = @head
+        while node.next
           if node.next.value == target
             node.next = node.next.next
-            return
+            return true
           end
+          node = node.next
         end
-        node = node.next
       end
     end
+    return false
   end
 
   ##
-  # Returns the values of each Node, as an array.
+  # Returns an Array containing the values in the list, in list order.
 
   def items
     values = Array.new
     node = @head
-    while node != nil
+    while node
       values << node.value
       node = node.next
     end
