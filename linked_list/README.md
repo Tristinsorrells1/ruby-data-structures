@@ -44,7 +44,7 @@ git clone git@github.com:adamvinueza/ruby-data-structures.git
 Using HTTPS:
 
 ```
-git clone https://:github.com/adamvinueza/ruby-data-structures.git
+git clone https://github.com/adamvinueza/ruby-data-structures.git
 ```
 
 To run the tests, from the subdirectory `linked_list` in this repository run:
