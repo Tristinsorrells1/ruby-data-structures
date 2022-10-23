@@ -79,10 +79,10 @@ algorithms exemplifying those running times in parentheses:
 
 This is the algorithmic complexity of operations on linked lists:
 
-- add\_front is O(1)
-- add\_end is O(n)
-- find is O(n)
-- remove is O(n)
+- `LinkedList.add_front` is O(1)
+- `LinkedList.add_end` is O(n)
+- `LinkedList.find` is O(n)
+- `LinkedList.remove` is O(n)
 
 
 ## Exercises to think about
