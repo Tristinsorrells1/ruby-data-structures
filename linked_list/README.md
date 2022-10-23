@@ -84,3 +84,60 @@ This is the algorithmic complexity of operations on linked lists:
 - find is O(n)
 - remove is O(n)
 
+
+## Exercises to think about
+
+### LinkedList.add\_after
+
+Here is a section to add to [the spec for linked lists](spec/linked_list_spec.rb):
+
+```ruby
+  describe ".add_after" do
+    context "given a target and a value" do
+      it "inserts the value after the target" do
+        list = LinkedList.new
+        list.add_front(2)
+        list.add_front(0)
+        list.add_after(0, 1)
+        expect(list.items).to eql([0, 1, 2])
+      end
+    end
+  end
+```
+
+Use the `LinkedList.find` method to implment `add_after`.
+
+
+### Doubly linked lists
+
+Suppose we modified the `Node` class to have a `previous` accessor: it behaves
+just like the `next` accessor, except it refers to the `Node` that comes _before_
+its `Node`. Here is its implementation of `Node`:
+
+```
+class Node
+  attr_reader value
+  attr_accessor next
+  attr_accessor previous
+
+  def initialize value
+    @value = value
+    @next = nil
+    @previous = nil
+  end
+end
+```
+
+Implement the `LinkedList` class's `add_front`, `add_end`, `find`, and `remove`
+methods using this `Node` class. Try to implement `remove` using `find`.
+
+### Stacks
+
+A _stack_ is a list-like data structure with the following methods:
+
+- `push` places an item onto the stack
+- `pop` removes _the last pushed item_ from the stack and returns it
+
+Implement `push` and `pop` using methods already implemented.
+
+Explain why `pop` should be O(1) while `remove` is O(n).
