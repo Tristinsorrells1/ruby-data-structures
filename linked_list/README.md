@@ -87,6 +87,17 @@ This is the algorithmic complexity of operations on linked lists:
 
 ## Exercises to think about
 
+### Reimplement
+
+Delete methods from `lib/linked_list.rb` and `lib/node.rb`. Try to reimplement
+them from memory, so as to get the tests to pass.
+
+This is an opportunity to play around with the code. If there's a step you find
+confusing, try to rewrite the method in a way you do understand and see what
+happens.
+
+Install `pry` and step through any methods you want to understand better.
+
 ### LinkedList.add\_after
 
 Here is a section to add to [the spec for linked lists](spec/linked_list_spec.rb):
